@@ -1,6 +1,9 @@
 package repository
 
-import "gorm.io/gorm"
+import (
+	"github.com/yintamma/998244353Plus1/util"
+	"gorm.io/gorm"
+)
 
 // User 用户模型
 type User struct {
@@ -24,7 +27,7 @@ func (*User) QueryUserById(id int16) (*User, error) {
 	}
 
 	if err != nil {
-		// util.Logger.Error("find user by id err:" + err.Error())
+		util.Logger.Error("find user by id err:" + err.Error())
 		return nil, err
 	}
 
