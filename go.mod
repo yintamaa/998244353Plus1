@@ -1,4 +1,4 @@
-module github.com/RaymondCode/simple-demo
+module github.com/yintamaa/998244353Plus1
 
 go 1.17
 

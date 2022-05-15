@@ -1,17 +1,17 @@
 package repository
 
 import (
-	"github.com/yintamma/998244353Plus1/util"
+	"github.com/yintamaa/998244353Plus1/util"
 	"gorm.io/gorm"
 )
 
 // User 用户模型
 type User struct {
-	Id            int64
-	Name          string
-	FollowCount   int64
-	FollowerCount int64
-	IsFollow      bool
+	Id            int64  `gorm:"column:id"`
+	Name          string `gorm:"column:name"`
+	FollowCount   int64  `gorm:"column:follow_count"`
+	FollowerCount int64  `gorm:"column:follower_count"`
+	IsFollow      bool   `gorm:"is_follow"`
 }
 
 func (User) Tablename() string {
