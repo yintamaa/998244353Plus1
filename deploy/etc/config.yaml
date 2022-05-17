@@ -1,0 +1,4 @@
+App:
+  Logger:
+    LogPath: "/data/project" # 日志目录
+    LogLevel: "" # 落盘门槛等级
