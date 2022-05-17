@@ -15,10 +15,10 @@ var configInstance *config
 
 var configOnce sync.Once
 
-func getConfigInstance() {
+func GetConfigInstance() {
 	configOnce.Do(func() {
 		configInstance = &config{}
-
+		viperInit()
 		configInstance.initLogger()
 	})
 }
@@ -35,6 +35,6 @@ func viperInit() {
 }
 
 func (c *config) initLogger() {
-	c.LoggerPath = viper.GetString("")
+	c.LoggerPath = viper.GetString("App.Logger.LogPath")
 
 }
