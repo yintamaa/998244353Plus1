@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/yintamaa/998244353Plus1/repository"
-	"github.com/yintamaa/998244353Plus1/util"
+	"github.com/yintamaa/998244353Plus1/utils"
 )
 
 type VedioInfo struct {
@@ -11,10 +11,10 @@ type VedioInfo struct {
 
 var next_time int64
 
-func QueryVedioInfoFlow() (*repository.Vedio, error) {
+func QueryVedioInfoFlow() ([]*repository.Vedio, error) {
 	var feed_query_flow VedioInfo
 	feed_query_flow.Do()
-	return &feed_query_flow.vedios, nil
+	return feed_query_flow.vedios, nil
 }
 
 func (f *VedioInfo) Do() (*VedioInfo, error) {
@@ -32,7 +32,7 @@ func (f *VedioInfo) checkParam() error {
 func (f *VedioInfo) prepareInfo() error {
 	vedios, err := repository.NewVedioDaoInstance().QueryVedioRecent(1)
 	if err != nil {
-		util.Logger.Error(":" + err.Error())
+		utils.GetLoggerInstance().Error(":" + err.Error())
 	}
 	f.vedios = vedios
 	next_time = vedios[0].CreateTime

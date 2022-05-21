@@ -1,7 +1,7 @@
 package repository
 
 import (
-	"github.com/yintamaa/998244353Plus1/util"
+	"github.com/yintamaa/998244353Plus1/utils"
 	"gorm.io/gorm"
 )
 
@@ -27,7 +27,8 @@ func (*User) QueryUserById(id int16) (*User, error) {
 	}
 
 	if err != nil {
-		util.Logger.Error("find user by id err:" + err.Error())
+		logger := utils.GetLoggerInstance()
+		logger.Error("find user by id err:" + err.Error())
 		return nil, err
 	}
 

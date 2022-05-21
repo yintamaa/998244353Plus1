@@ -11,8 +11,8 @@ import (
 
 type FeedResponse struct {
 	Response
-	VideoList []repository.Vedio `json:"video_list,omitempty"`
-	NextTime  int64              `json:"next_time,omitempty"`
+	VideoList []*repository.Vedio `json:"video_list,omitempty"`
+	NextTime  int64               `json:"next_time,omitempty"`
 }
 
 // Feed same demo video list for every request

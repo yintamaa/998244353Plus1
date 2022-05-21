@@ -3,7 +3,7 @@ package repository
 import (
 	"sync"
 
-	"github.com/yintamaa/998244353Plus1/util"
+	"github.com/yintamaa/998244353Plus1/utils"
 )
 
 type Vedio struct {
@@ -39,7 +39,7 @@ func (*VedioDao) QueryVedioById(id int64) (*Vedio, error) {
 	var vedio Vedio
 	err := db.Where("id = ?", id).Find(&vedio).Error
 	if err != nil {
-		util.Logger.Error("find vedio by id err:" + err.Error())
+		utils.GetLoggerInstance().Error("find vedio by id err:" + err.Error())
 		return nil, err
 	}
 	return &vedio, nil
@@ -50,7 +50,7 @@ func (*VedioDao) QueryVedioRecent(latest_time int64) ([]*Vedio, error) {
 	var vedios []*Vedio
 	err := db.Where("CreateTime > ?", latest_time).Limit(30).Order("CreateTime DESV").Find(&vedios).Error
 	if err != nil {
-		util.Logger.Error("find vedio err:" + err.Error())
+		utils.GetLoggerInstance().Error("find vedio err:" + err.Error())
 		return nil, err
 	}
 	return vedios, nil
